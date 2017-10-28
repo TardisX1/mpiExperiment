@@ -1,4 +1,4 @@
 main:main.c
-	mpicc  main.c -o main
+	mpicc  main.c -o main -lm
 clean:
 	rm -f main *.o

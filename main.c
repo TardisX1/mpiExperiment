@@ -14,7 +14,7 @@ int main (int argc, char **argv)
   int rank, numprocs;//线程
   int namelen;//处理器
   char processor_name[MPI_MAX_PROCESSOR_NAME];
-  int i,j,dimension,dimensionx,row_number,d=-8;//必要条件
+  int i,j,dimension=0,dimensionx,row_number=0,d=-8;//必要条件
   int LX,LY,p,q;//M初始化
   int **M;//目标矩阵
   char *X,*Y;
@@ -23,14 +23,14 @@ int main (int argc, char **argv)
   MPI_Comm_rank (MPI_COMM_WORLD, &rank);//获得当前进程号
   MPI_Comm_size (MPI_COMM_WORLD, &numprocs);//获得进程总数
   MPI_Get_processor_name (processor_name, &namelen);//获得处理器名
-
-  dimension=argv[1][0]-'0';
-  //printf("%d ",dimension);
-  //printf("I know");
-  dimensionx=dimension+1;
-  row_number=argv[2][0]-'0';//M的行号
   
-
+  //行列数
+  dimension=atoi(argv[1]);
+  //printf("%d\n",dimension);
+  dimensionx=dimension+1;
+  //M的行号
+  row_number=atoi(argv[2]);
+  //printf("%d\n",row_number);
   
   char residues[27] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
   X = (char*)malloc(sizeof(char)*(dimension)); 

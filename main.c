@@ -103,7 +103,12 @@ int main (int argc, char **argv)
 
   //int a=two(3,3,M,-1);
 
+  //释放动态内存
+  free(M);
+  free(X);
+  free(Y);
   MPI_Finalize ();//结束
+
   return 0;
 }
 

@@ -1,7 +1,7 @@
 #include "mpi.h"
 #include <stdio.h>
 #include <math.h>
-#include<stdlib.h>
+#include <stdlib.h>
 
 int one(int i,int j,int **M,int S[26][26],char *X,char *Y);
 int two(int i,int j,int **M,int d);
@@ -22,6 +22,7 @@ int main (int argc, char **argv)
   MPI_Init (&argc, &argv);//MPI初始化
   MPI_Comm_rank (MPI_COMM_WORLD, &rank);//获得当前进程号
   MPI_Comm_size (MPI_COMM_WORLD, &numprocs);//获得进程总数
+  //printf("%d\n",numprocs);
   MPI_Get_processor_name (processor_name, &namelen);//获得处理器名
   
   //行列数
@@ -124,32 +125,34 @@ int one(int i,int j,int **M,int S[26][26],char *X,char *Y)
   return o;
 }
 
-//M(k,j)+d
+//M(k,j)+(i-k)^2
 int two(int i,int j,int **M,int d)
 {
-  int t=M[0][j];
+  int t=M[0][j]+i*i;
   for(int index=0;index<i;index++)
   {
-    if(M[index][j]>=t)
-      t=M[index][j];
+    d=(i-index)*(i-index);
+    if(M[index][j]+d>=t)
+      t=M[index][j]+d;
     //printf("%d\n",t);
   }
-  t+=d;
+  
   //printf("%d\n",t);
   return t;
 }
 
-//M(i,k)+d
+//M(i,k)+(j-k)^2
 int three(int i,int j,int **M,int d)
 {
-  int th=M[i][0];
+  int th=M[i][0]+j*j;
   for(int index=0;index<j;index++)
   {
-    if(M[i][index]>=th)
-      th=M[i][index];
+    d=(j-index)*(j-index);
+    if(M[i][index]+d>=th)
+      th=M[i][index]+d;
     //printf("%d\n",t);
   }
-  th+=d;
+ 
   //printf("%d\n",th);
   return th;
 }

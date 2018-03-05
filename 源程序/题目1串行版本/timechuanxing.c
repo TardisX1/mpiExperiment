@@ -10,7 +10,7 @@ int main(int argc,char **argv)
   char *filename=argv[1];//测速程序名
   char *dimension=argv[2];//测试参数（可随意指定）
   char *row_number=argv[3];//测试参数
-  char *rt=malloc(sizeof(char)*(2+strlen(filename)+strlen(dimension)+strlen(row_number)));//形成的命令行
+  char *rt=malloc(sizeof(char)*(4+strlen(filename)+strlen(dimension)+strlen(row_number)));//形成的命令行
   strcpy(rt,"./");
   strcat(rt,filename);
   strcat(rt," ");

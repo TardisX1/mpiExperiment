@@ -1,7 +1,7 @@
 #include "mpi.h"
 #include <stdio.h>
 #include <math.h>
-#include<stdlib.h>
+#include <stdlib.h>
 
 int one(int i,int j,int **M,int S[26][26],char *X,char *Y);
 int two(int i,int j,int **M,int d);
@@ -22,6 +22,7 @@ int main (int argc, char **argv)
   MPI_Init (&argc, &argv);//MPI初始化
   MPI_Comm_rank (MPI_COMM_WORLD, &rank);//获得当前进程号
   MPI_Comm_size (MPI_COMM_WORLD, &numprocs);//获得进程总数
+  //printf("%d\n",numprocs);
   MPI_Get_processor_name (processor_name, &namelen);//获得处理器名
   
   //行列数
@@ -108,6 +109,7 @@ int main (int argc, char **argv)
   free(X);
   free(Y);
   MPI_Finalize ();//结束
+
   return 0;
 }
 

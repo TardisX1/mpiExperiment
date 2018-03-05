@@ -1,0 +1,26 @@
+这是题目1的串行计算程序
+mainchuanxing为计算程序
+timechuanxing为测试运行时间程序
+使用make命令编译
+
+
+以下为命令行指令
+
+串行
+./mainchuanxing dimension row_number
+例：  ./mainchuanxing 200 7 
+意为：执行main程序，维度为200,输出第7行的结果
+
+
+检测串行时间
+./timechuanxing mainchuanxing dimension row_number
+例：  ./timechuanxing mainchuanxing 200 7
+意为：执行main程序，维度为200,输出第7行的结果，并输出程序运行时间
+
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+
+这是题目2的并行计算程序
+main为计算程序
+time为测试运行时间程序
+使用make命令编译
+
+
+以下为命令行指令
+
+并行  
+mpirun -np 核数 ./main dimension row_number
+例：  mpirun -np 3 ./main 7 5
+意为：用3个核进行计算，执行main程序，维度为7,输出第5行的结果
+
+
+检测并行计算时间
+./time 核数 main dimension row_number
+例：  ./time 3 main 200 7
+意为：用3个核进行计算，执行main程序，维度为200,输出第7行的结果，并输出程序运行时间
+
+
+
+
+
